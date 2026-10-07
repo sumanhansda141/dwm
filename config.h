@@ -114,6 +114,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "rofi", "-show", "drun", NULL };
+static const char *rofiwnd[] = { "rofi", "-show", "window", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *flameshot[]  = { "flameshot", "gui", NULL };
 
@@ -121,8 +122,9 @@ static const char *flameshot[]  = { "flameshot", "gui", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ControlMask,           XK_d,      spawn,          {.v = rofiwnd } },
 	{ MODKEY,                       XK_t,      spawn,          {.v = termcmd } },
-  { 0,                         XK_F12,      spawn,          SHCMD("flameshot gui") },
+  { 0,                            XK_F12,    spawn,          {.v = flameshot} },
 	{ MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstackvis,  {.i = -1 } },
 	// { MODKEY|ShiftMask,             XK_j,      focusstackhid,  {.i = +1 } },
